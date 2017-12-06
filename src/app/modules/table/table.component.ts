@@ -70,6 +70,9 @@ export class TableComponent {
         })
     }
 
+    toggleSelect(index) {
+        this.users[index].selected = !this.users[index].selected;
+    }
 
 
 }
