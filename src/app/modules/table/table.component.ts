@@ -15,6 +15,11 @@ export class TableComponent {
     constructor(private http: HttpClient) { }
 
     ngOnInit(): void {
+        this.loadData();
+    }
+
+    loadData() {
+        this.users = null;
         this.http.get('https://jsonplaceholder.typicode.com/users').subscribe(data => {
             setTimeout(()=>{ 
                 this.users = this.dataInstrument(data); 
@@ -38,6 +43,12 @@ export class TableComponent {
         });
     }
 
+    removeSelected() {
+        this.users = this.users.filter(u => {
+            return !u.selected || u.locked;
+        });        
+    }
+
     someSelected() {
         if (!this.users) return false;
         return this.users.find(u => u.selected == true);
@@ -58,5 +69,7 @@ export class TableComponent {
             return u;
         })
     }
+
+
 
 }

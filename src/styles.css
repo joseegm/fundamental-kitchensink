@@ -6,4 +6,6 @@
 
 .tn-app__sidebar { background: #f1f3f6; } 
 
+.tn-action-bar { background: none; }
+
 .tn-badge + .tn-badge { margin-left: 1em; }

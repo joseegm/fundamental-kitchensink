@@ -1,3 +1,22 @@
+<header class="tn-action-bar">
+    <div class="tn-action-bar__navigation">
+        <a routerLink="/" class="tn-button tn-button--text tn-button--icon tn-button--large" aria-label="Back">
+            <span class="tn-icon tn-icon--backarrow tn-icon--large" role="presentation"></span>
+        </a>
+    </div>
+    <h1 class="tn-action-bar__title">
+        Table Sample
+    </h1>
+    <div class="tn-action-bar__actions">
+        <div class="tn-action-bar__action-item">
+            <button (click)="loadData()" class="tn-button tn-button--text tn-button--action-bar" [disabled]="!users">
+                <span class="tn-icon tn-icon--sync tn-icon--medium" role="presentation"></span>
+                Reset Data
+            </button>
+        </div>
+    </div>
+</header>
+
 <article class="tn-page">
     <section class="tn-section">
         <div class="tn-panel" [attr.aria-busy]="!users ? 'true' : 'false'">
@@ -6,41 +25,47 @@
             </div>
             <div class="tn-panel__header">
                 <h1 class="tn-panel__title">
-                    Table Example
+                    Users
                 </h1>
                 <div class="tn-panel__actions">
                     <button (click)="toggleVisibleSelected(true)" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
                         <span class="tn-icon tn-icon--visibilityon tn-icon--medium" role="presentation"></span>
                     </button>
                     <button (click)="toggleVisibleSelected(false)" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
-                            <span class="tn-icon tn-icon--visibilityoff tn-icon--medium" role="presentation"></span>
-                        </button>
-                    </div>
+                        <span class="tn-icon tn-icon--visibilityoff tn-icon--medium" role="presentation"></span>
+                    </button>
+                    <button (click)="removeSelected()" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
+                        <span class="tn-icon tn-icon--delete tn-icon--medium" role="presentation"></span>
+                    </button>
+                </div>
             </div>
 
-            <table class="tn-table">
+            <table class="tn-table" style="min-width: 1290px;">
                 <thead>
                     <tr>
-                        <th>
-                            <input type="checkbox" (ngModelChange)="toggleSelectedAll($event)" [(ngModel)]="allSelected" >
+                        <th style="width: 6em;">
+                            <input type="checkbox" (ngModelChange)="toggleSelectedAll($event)" [(ngModel)]="allSelected">
                         </th>
                         <th>Email</th>
                         <th>Username</th>
-                        <th>Status</th>
                         <th>Name</th>
+                        <th style="width: 16em;">Status</th>
                         <th>Website</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of users; let i = index;" [attr.aria-selected]="user.selected">
-                        <td><input type="checkbox" [(ngModel)]="user.selected"></td>
+                        <td>
+                            <input type="checkbox" [(ngModel)]="user.selected">
+                        </td>
                         <td>{{ user.email }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.name }}</td>
                         <td>
                             <span *ngIf="user.locked" class="tn-badge tn-badge--error">
                                 Locked
                             </span>
-
                             <span *ngIf="user.visible" class="tn-badge tn-badge--success">
                                 Visible
                             </span>
@@ -48,8 +73,6 @@
                                 Not Visible
                             </span>
                         </td>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.name }}</td>
                         <td>{{ user.website }}</td>
                         <td>
                             <div class="tn-has-float-right">
