@@ -83,7 +83,7 @@
                                     <span [ngClass]="{ 'tn-icon--visibilityoff': user.visible, 'tn-icon--visibilityon': !user.visible }" class="tn-icon tn-icon--small"
                                         role="presentation"></span>
                                 </button>
-                                <button class="tn-button tn-button--text tn-button--icon tn-button--small" [disabled]="user.locked">
+                                <button (click)="deleteItem(i)" class="tn-button tn-button--text tn-button--icon tn-button--small" [disabled]="user.locked">
                                     <span class="tn-icon tn-icon--delete tn-icon--small" role="presentation"></span>
                                 </button>
                             </div>

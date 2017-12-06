@@ -70,8 +70,8 @@ export class TableComponent {
         })
     }
 
-    toggleSelect(index) {
-        this.users[index].selected = !this.users[index].selected;
+    deleteItem(index) {
+        this.users.splice(index, 1);
     }
 
 
