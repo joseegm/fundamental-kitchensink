@@ -1,0 +1,9 @@
+
+.tn-ui__app { min-height: 100vh; }
+
+.tn-ui__header { background: #424e5a; }
+    .tn-ui__header h1 { color: white; font-size: 1.5em; margin: .25em; }
+
+.tn-app__sidebar { background: #f1f3f6; } 
+
+.tn-badge + .tn-badge { margin-left: 1em; }

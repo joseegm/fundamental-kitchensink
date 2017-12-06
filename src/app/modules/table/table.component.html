@@ -1,0 +1,73 @@
+<article class="tn-page">
+    <section class="tn-section">
+        <div class="tn-panel" [attr.aria-busy]="!users ? 'true' : 'false'">
+            <div class="tn-spinner" [attr.aria-hidden]="!users ? 'false' : 'true'" aria-label="Loading">
+                <div></div>
+            </div>
+            <div class="tn-panel__header">
+                <h1 class="tn-panel__title">
+                    Table Example
+                </h1>
+                <div class="tn-panel__actions">
+                    <button (click)="toggleVisibleSelected(true)" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
+                        <span class="tn-icon tn-icon--visibilityon tn-icon--medium" role="presentation"></span>
+                    </button>
+                    <button (click)="toggleVisibleSelected(false)" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
+                            <span class="tn-icon tn-icon--visibilityoff tn-icon--medium" role="presentation"></span>
+                        </button>
+                    </div>
+            </div>
+
+            <table class="tn-table">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" (ngModelChange)="toggleSelectedAll($event)" [(ngModel)]="allSelected" >
+                        </th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Status</th>
+                        <th>Name</th>
+                        <th>Website</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users; let i = index;" [attr.aria-selected]="user.selected">
+                        <td><input type="checkbox" [(ngModel)]="user.selected"></td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <span *ngIf="user.locked" class="tn-badge tn-badge--error">
+                                Locked
+                            </span>
+
+                            <span *ngIf="user.visible" class="tn-badge tn-badge--success">
+                                Visible
+                            </span>
+                            <span *ngIf="!user.visible" class="tn-badge">
+                                Not Visible
+                            </span>
+                        </td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.website }}</td>
+                        <td>
+                            <div class="tn-has-float-right">
+                                <button (click)="toggleLocked(i)" class="tn-button tn-button--text tn-button--icon tn-button--small">
+                                    <span class="tn-icon tn-icon--lock tn-icon--small" role="presentation"></span>
+                                </button>
+                                <button (click)="toggleVisibility(i)" class="tn-button tn-button--text tn-button--icon tn-button--small" [disabled]="user.locked">
+                                    <span [ngClass]="{ 'tn-icon--visibilityoff': user.visible, 'tn-icon--visibilityon': !user.visible }" class="tn-icon tn-icon--small"
+                                        role="presentation"></span>
+                                </button>
+                                <button class="tn-button tn-button--text tn-button--icon tn-button--small" [disabled]="user.locked">
+                                    <span class="tn-icon tn-icon--delete tn-icon--small" role="presentation"></span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</article>
