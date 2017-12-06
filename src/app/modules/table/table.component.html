@@ -63,13 +63,13 @@
                         <td>{{ user.username }}</td>
                         <td>{{ user.name }}</td>
                         <td>
-                            <span *ngIf="user.locked" class="tn-badge tn-badge--error">
+                            <span *ngIf="user.locked" class="tn-badge tn-badge--pill tn-badge--error">
                                 Locked
                             </span>
-                            <span *ngIf="user.visible" class="tn-badge tn-badge--success">
+                            <span *ngIf="user.visible" class="tn-badge tn-badge--pill tn-badge--success">
                                 Visible
                             </span>
-                            <span *ngIf="!user.visible" class="tn-badge">
+                            <span *ngIf="!user.visible" class="tn-badge tn-badge--pill">
                                 Not Visible
                             </span>
                         </td>
