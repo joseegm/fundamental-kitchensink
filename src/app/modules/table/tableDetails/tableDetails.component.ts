@@ -20,7 +20,7 @@ export class TableDetailsComponent {
 
     loadData() {
         this.user = null;
-        this.userService.getUser(this.route.params.value.id).subscribe(data => {
+        this.userService.getUser(this.route.snapshot.paramMap.get('id')).subscribe(data => {
             setTimeout(()=>{ 
                 this.user = data; 
             }, 500)
