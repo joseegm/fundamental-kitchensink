@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RequestOptions } from '@angular/http';
+
+import { UsersService } from '../../services/users/users.service';
 
 @Component({
     selector: 'table-example',
@@ -12,7 +12,7 @@ export class TableComponent {
 
     allSelected: boolean = false;
 
-    constructor(private http: HttpClient) { }
+    constructor(private userService: UsersService) { }
 
     ngOnInit(): void {
         this.loadData();
@@ -20,10 +20,10 @@ export class TableComponent {
 
     loadData() {
         this.users = null;
-        this.http.get('https://jsonplaceholder.typicode.com/users').subscribe(data => {
+        this.userService.getUsers().subscribe(data => {
             setTimeout(()=>{ 
                 this.users = this.dataInstrument(data); 
-            }, 1500)
+            }, 500)
         });
     }
 

@@ -8,10 +8,14 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './modules/menu/menu.component';
 import { WelcomeComponent } from './modules/welcome/welcome.component';
 import { TableComponent } from './modules/table/table.component';
+import { TableDetailsComponent } from './modules/table/tableDetails/tableDetails.component';
+
+import { UsersService } from './services/users/users.service';
 
 const appRoutes: Routes = [
     { path: '', component: WelcomeComponent, pathMatch: 'full' },
-    { path: 'table', component: TableComponent, pathMatch: 'full' }
+    { path: 'table', component: TableComponent, pathMatch: 'full' },
+    { path: 'table/:id', component: TableDetailsComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -19,7 +23,8 @@ const appRoutes: Routes = [
         AppComponent,
         MenuComponent,
         WelcomeComponent,
-        TableComponent
+        TableComponent,
+        TableDetailsComponent
     ],
     imports: [
         BrowserModule,
@@ -27,7 +32,9 @@ const appRoutes: Routes = [
         HttpClientModule,
         FormsModule
     ],
-    providers: [],
+    providers: [
+        UsersService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
