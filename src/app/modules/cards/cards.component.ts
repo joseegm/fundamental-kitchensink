@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { DataService } from '../../services/data.service';
 
@@ -12,7 +13,7 @@ export class CardsComponent {
 
     allSelected: boolean = false;
 
-    constructor(private dataService: DataService) { }
+    constructor(private dataService: DataService, private sanitizer: DomSanitizer) { }
 
     ngOnInit(): void {
         this.loadData();
@@ -32,7 +33,8 @@ export class CardsComponent {
             user.showMenu = false;
             user.visible = true;
             user.locked = false;
-
+            user.avatarStyle = this.sanitizer.bypassSecurityTrustStyle('background-image: url("https://api.adorable.io/avatars/240/' + user.email + '");');
+            
             return user;
         });
     }

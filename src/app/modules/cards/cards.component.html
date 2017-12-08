@@ -29,6 +29,9 @@
 
                 <div class="tn-card-group">
                     <a *ngFor="let user of users; let i = index;" routerLink="/cards/{{ user.id }}" class="tn-card" role="button">
+                        <div class="tn-card__media">
+                            <span class="tn-image tn-image--xl tn-image--circle tn-image--profile" [style]="user.avatarStyle" aria-label="YaaS product thumbnail"></span>
+                        </div>
                         <div class="tn-card__content">
                             <h2 class="tn-card__header">
                                 {{ user.name }}
@@ -66,30 +69,30 @@
                                     <li>
                                         <a (click)="toggleLocked(i, $event); false;" class="tn-dropdown__item">
                                             <span *ngIf="user.locked">
-                                                    <i class="material-icons">lock_open</i>
-                                                    Unlock user
+                                                <i class="material-icons">lock_open</i>
+                                                Unlock user
                                             </span>
                                             <span *ngIf="!user.locked">
-                                                    <i class="material-icons">lock_outline</i>
-                                                    Lock user
+                                                <i class="material-icons">lock_outline</i>
+                                                Lock user
                                             </span>
                                         </a>
                                     </li>
                                     <li>
                                         <a (click)="toggleVisible(i, $event); false;" class="tn-dropdown__item" [attr.aria-disabled]="user.locked">
                                             <span *ngIf="user.visible">
-                                                    <i class="material-icons">visibility_off</i>                                                    Set visibility off
+                                                <i class="material-icons">visibility_off</i> Set visibility off
                                             </span>
                                             <span *ngIf="!user.visible">
-                                                    <i class="material-icons">visibility</i>
-                                                    Set visibility on
+                                                <i class="material-icons">visibility</i>
+                                                Set visibility on
                                             </span>
                                         </a>
                                     </li>
                                     <li>
                                         <a (click)="deleteItem(i, $event); false;" class="tn-dropdown__item" [attr.aria-disabled]="user.locked">
-                                                <i class="material-icons">delete</i>
-                                                Delete
+                                            <i class="material-icons">delete</i>
+                                            Delete
                                         </a>
                                     </li>
                                 </ul>
