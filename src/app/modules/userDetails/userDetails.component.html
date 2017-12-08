@@ -14,11 +14,11 @@
         </h1>
         <div class="tn-action-bar__actions">
             <div class="tn-action-bar__action-item">
-                <button class="tn-button tn-button--text tn-button--action-bar">
+                <button class="tn-button tn-button--text tn-button--action-bar" disabled>
                     <i class="material-icons tn-icon--medium">lock_outline</i>
                     Lock
                 </button>
-                <button class="tn-button tn-button--text tn-button--action-bar">
+                <button class="tn-button tn-button--text tn-button--action-bar" disabled>
                     <i class="material-icons tn-icon--medium">visibility</i>
                     Set Visible
                 </button>
@@ -41,7 +41,11 @@
 
                 <div class="tn-container">
 
-                    <div class="tn-col--6">
+                    <div class="tn-col--2">
+                            <span class="tn-image tn-image--xxl tn-image--circle tn-image--profile" [style]="user.avatarStyle"></span>
+                    </div>
+
+                    <div class="tn-col--5">
                         <div class="tn-form__item">
                             <label class="tn-form__label" for="input-7">Name</label>
                             <input class="tn-form__control" type="text" id="input-7" [value]="user.name" readonly>
@@ -60,7 +64,7 @@
                         </div>
                     </div>
 
-                    <div class="tn-col--6">
+                    <div class="tn-col--5">
                         <div class="tn-form__item">
                             <label class="tn-form__label" for="input-7">Company</label>
                             <input class="tn-form__control" type="text" id="input-7" [value]="user.company.name" readonly>
