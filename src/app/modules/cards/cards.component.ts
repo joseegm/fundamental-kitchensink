@@ -29,33 +29,35 @@ export class CardsComponent {
 
     dataInstrument(data) {
         return data.map(user => {
-            user.selected = false;
+            user.showMenu = false;
             user.visible = true;
             user.locked = false;
+
             return user;
         });
     }
 
-    removeSelected() {
-        this.users = this.users.filter(u => {
-            return !u.selected || u.locked;
-        });        
+    toggleMenu(index, event) {
+        this.users[index].showMenu = !this.users[index].showMenu;
+        event.stopPropagation();
     }
 
-    toggleLocked(index) {
+    toggleLocked(index, event) {
         this.users[index].locked = !this.users[index].locked;
+        this.users[index].showMenu = false;
+        event.stopPropagation();
     }
 
-    toggleVisibleSelected(visible) {
-        this.users = this.users.map(u => {
-            if (u.locked || !u.selected) return u;
-            u.visible = visible;
-            return u;
-        })
+    toggleVisible(index, event) {
+        this.users[index].visible = !this.users[index].visible;
+        this.users[index].showMenu = false;
+        event.stopPropagation();
     }
 
-    deleteItem(index) {
+    deleteItem(index, event) {
         this.users.splice(index, 1);
+        this.users[index].showMenu = false;
+        event.stopPropagation();
     }
 
 

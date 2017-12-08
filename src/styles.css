@@ -7,3 +7,7 @@
 .tn-app__sidebar { background: #d7d7d7; } 
 
 .tn-badge + .tn-badge { margin-left: 1em; }
+
+.tn-container { max-width: 100%; }
+
+.tn-card__status span { margin-right: 1em; }

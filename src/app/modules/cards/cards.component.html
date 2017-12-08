@@ -40,22 +40,47 @@
                                 {{ user.email }}
                             </p>
                             <p class="tn-card__status">
+                                <span *ngIf="user.locked" class="tn-badge--error">
+                                    Locked
+                                </span>
                                 <span *ngIf="user.visible" class="tn-badge--success">
                                     Visible
                                 </span>
                                 <span *ngIf="!user.visible" class="">
                                     Not Visible
                                 </span>
-                                <span *ngIf="user.locked" class="tn-badge--error">
-                                    Locked
-                                </span>
                             </p>
                         </div>
                         <div class="tn-card__actions">
-                            <button (click)="toggleLocked(i)" class="tn-button tn-button--text tn-button--icon tn-button--small" aria-label="Lock customer">
-                                <i *ngIf="!user.locked" class="material-icons tn-icon--meduim">lock_open</i>
-                                <i *ngIf="user.locked" class="material-icons tn-icon--meduim">lock_outline</i>
+                            <!--
+                            <button (click)="toggleLocked(i, $event); false;" class="tn-button tn-button--text tn-button--icon tn-button--small" aria-label="Lock customer">
+                                <i *ngIf="!user.locked" class="material-icons">lock_open</i>
+                                <i *ngIf="user.locked" class="material-icons">lock_outline</i>
                             </button>
+                            -->
+                            <div class="tn-dropdown">
+                                <button (click)="toggleMenu(i, $event); false;" class="tn-button tn-button--icon tn-button--text" aria-haspopup="true" aria-label="More">
+                                    <span class="tn-icon tn-icon--more tn-icon--medium" role="presentation"></span>
+                                </button>
+                                <ul class="tn-dropdown__menu tn-contextual-menu" [attr.aria-hidden]="!user.showMenu">
+                                    <li>
+                                        <a (click)="toggleLocked(i, $event); false;" class="tn-dropdown__item">
+                                            <span *ngIf="user.locked">Unlock user</span>
+                                            <span *ngIf="!user.locked">Lock user</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a (click)="toggleVisible(i, $event); false;" class="tn-dropdown__item">
+                                                <span *ngIf="user.visible">Set visibility off</span>
+                                                <span *ngIf="!user.visible">Set visibility on</span>
+                                                
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a (click)="deleteItem(i, $event); false;"class="tn-dropdown__item">Delete</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </a>
                 </div>
