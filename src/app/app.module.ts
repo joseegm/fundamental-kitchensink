@@ -8,14 +8,16 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './modules/menu/menu.component';
 import { WelcomeComponent } from './modules/welcome/welcome.component';
 import { TableComponent } from './modules/table/table.component';
-import { TableDetailsComponent } from './modules/table/tableDetails/tableDetails.component';
+import { UserDetailsComponent } from './modules/userDetails/userDetails.component';
+import { CardsComponent } from './modules/cards/cards.component';
 
-import { UsersService } from './services/users/users.service';
+import { DataService } from './services/data.service';
 
 const appRoutes: Routes = [
     { path: '', component: WelcomeComponent, pathMatch: 'full' },
     { path: 'table', component: TableComponent, pathMatch: 'full' },
-    { path: 'table/:id', component: TableDetailsComponent, pathMatch: 'full' }
+    { path: ':componentSlug/:id', component: UserDetailsComponent, pathMatch: 'full' },
+    { path: 'cards', component: CardsComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
         MenuComponent,
         WelcomeComponent,
         TableComponent,
-        TableDetailsComponent
+        UserDetailsComponent,
+        CardsComponent
     ],
     imports: [
         BrowserModule,
@@ -33,7 +36,7 @@ const appRoutes: Routes = [
         FormsModule
     ],
     providers: [
-        UsersService
+        DataService
     ],
     bootstrap: [AppComponent]
 })

@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 import { DataService } from '../../services/data.service';
 
 @Component({
-    selector: 'table-example',
-    templateUrl: './table.component.html'
+    selector: 'cards-example',
+    templateUrl: './cards.component.html'
 })
-export class TableComponent {
+export class CardsComponent {
 
     users: any;
 
@@ -36,26 +36,10 @@ export class TableComponent {
         });
     }
 
-    toggleSelectedAll(checked) {
-        this.users = this.users.map(u => {
-            u.selected = checked;
-            return u;
-        });
-    }
-
     removeSelected() {
         this.users = this.users.filter(u => {
             return !u.selected || u.locked;
         });        
-    }
-
-    someSelected() {
-        if (!this.users) return false;
-        return this.users.find(u => u.selected == true);
-    }
-
-    toggleVisibility(index) {
-        this.users[index].visible = !this.users[index].visible;
     }
 
     toggleLocked(index) {

@@ -1,0 +1,65 @@
+<div class="tn-page">
+    <header class="tn-action-bar">
+        <h1 class="tn-action-bar__title">
+            Cards Sample
+        </h1>
+        <div class="tn-action-bar__actions">
+            <div class="tn-action-bar__action-item">
+                <button (click)="loadData()" class="tn-button tn-button--text tn-button--action-bar" [disabled]="!users">
+                    <i class="material-icons tn-icon--medium">refresh</i>
+                    Reset Data
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <article class="tn-page__content">
+        <section class="tn-section">
+            <div class="tn-panel" [attr.aria-busy]="!users ? 'true' : 'false'">
+                <div class="tn-spinner" [attr.aria-hidden]="!users ? 'false' : 'true'" aria-label="Loading">
+                    <div></div>
+                </div>
+                <div class="tn-panel__header">
+                    <h1 class="tn-panel__title">
+                        Customers
+                    </h1>
+                    <div class="tn-panel__actions">
+                    </div>
+                </div>
+
+                <div class="tn-card-group">
+                    <a *ngFor="let user of users; let i = index;" routerLink="/cards/{{ user.id }}" class="tn-card" role="button">
+                        <div class="tn-card__content">
+                            <h2 class="tn-card__header">
+                                {{ user.name }}
+                            </h2>
+                            <p class="tn-card__description">
+                                {{ user.company.name }}
+                            </p>
+                            <p>
+                                {{ user.email }}
+                            </p>
+                            <p class="tn-card__status">
+                                <span *ngIf="user.visible" class="tn-badge--success">
+                                    Visible
+                                </span>
+                                <span *ngIf="!user.visible" class="">
+                                    Not Visible
+                                </span>
+                                <span *ngIf="user.locked" class="tn-badge--error">
+                                    Locked
+                                </span>
+                            </p>
+                        </div>
+                        <div class="tn-card__actions">
+                            <button (click)="toggleLocked(i)" class="tn-button tn-button--text tn-button--icon tn-button--small" aria-label="Lock customer">
+                                <i *ngIf="!user.locked" class="material-icons tn-icon--meduim">lock_open</i>
+                                <i *ngIf="user.locked" class="material-icons tn-icon--meduim">lock_outline</i>
+                            </button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </article>
+</div>

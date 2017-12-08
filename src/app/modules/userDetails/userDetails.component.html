@@ -1,0 +1,85 @@
+<div class="tn-page" [attr.aria-busy]="user ? 'false' : 'true'">
+    <div class="tn-spinner" [attr.aria-hidden]="!user ? 'false' : 'true'" aria-label="Loading">
+        <div></div>
+    </div>
+
+    <header *ngIf="user" class="tn-action-bar">
+        <div class="tn-action-bar__navigation">
+            <a routerLink="/{{ componentSlug }}" class="tn-button tn-button--text tn-button--icon tn-button--large" aria-label="Back">
+                <span class="tn-icon tn-icon--backarrow tn-icon--large" role="presentation"></span>
+            </a>
+        </div>
+        <h1 class="tn-action-bar__title">
+            {{ user.name }}
+        </h1>
+        <div class="tn-action-bar__actions">
+            <div class="tn-action-bar__action-item">
+                <button class="tn-button tn-button--text tn-button--action-bar">
+                    <span class="tn-icon tn-icon--lock tn-icon--medium" role="presentation"></span>
+                    Lock
+                </button>
+                <button class="tn-button tn-button--text tn-button--action-bar">
+                    <span class="tn-icon tn-icon--visibilityon tn-icon--medium" role="presentation"></span>
+                    Set Visible
+                </button>
+                <button class="tn-button tn-button--text tn-button--action-bar" disabled>
+                    <span class="tn-icon tn-icon--delete tn-icon--medium" role="presentation"></span>
+                    Delete
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <article *ngIf="user" class="tn-page__content">
+        <div class="tn-section">
+            <div class="tn-pannel">
+                <div class="tn-panel__header">
+                    <h1 class="tn-panel__title">
+                        User Details
+                    </h1>
+                </div>
+
+                <div class="tn-container">
+
+                    <div class="tn-col--6">
+                        <div class="tn-form__item">
+                            <label class="tn-form__label" for="input-7">Name</label>
+                            <input class="tn-form__control" type="text" id="input-7" [value]="user.name" readonly>
+                        </div>
+                        <div class="tn-form__item">
+                            <label class="tn-form__label" for="input-7">Username</label>
+                            <input class="tn-form__control" type="text" id="input-7" [value]="user.username" readonly>
+                        </div>
+                        <div class="tn-form__item">
+                            <label class="tn-form__label" for="input-7">Email</label>
+                            <input class="tn-form__control" type="text" id="input-7" [value]="user.email" readonly>
+                        </div>
+                        <div class="tn-form__item">
+                            <label class="tn-form__label" for="input-7">Website</label>
+                            <input class="tn-form__control" type="text" id="input-7" [value]="user.website" readonly>
+                        </div>
+                    </div>
+
+                    <div class="tn-col--6">
+                        <div class="tn-form__item">
+                            <label class="tn-form__label" for="input-7">Company</label>
+                            <input class="tn-form__control" type="text" id="input-7" [value]="user.company.name" readonly>
+                        </div>
+                        <div class="tn-form__item">
+                            <label class="tn-form__label" for="input-7">Slogan</label>
+                            <input class="tn-form__control" type="text" id="input-7" [value]="user.company.catchPhrase" readonly>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </article>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>

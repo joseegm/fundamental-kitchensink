@@ -6,7 +6,7 @@
         <div class="tn-action-bar__actions">
             <div class="tn-action-bar__action-item">
                 <button (click)="loadData()" class="tn-button tn-button--text tn-button--action-bar" [disabled]="!users">
-                    <span class="tn-icon tn-icon--sync tn-icon--medium" role="presentation"></span>
+                        <i class="material-icons tn-icon--medium">refresh</i>
                     Reset Data
                 </button>
             </div>
@@ -25,13 +25,13 @@
                     </h1>
                     <div class="tn-panel__actions">
                         <button (click)="toggleVisibleSelected(true)" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
-                            <span class="tn-icon tn-icon--visibilityon tn-icon--medium" role="presentation"></span>
+                                <i class="material-icons tn-icon--medium">visibility</i>
                         </button>
                         <button (click)="toggleVisibleSelected(false)" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
-                            <span class="tn-icon tn-icon--visibilityoff tn-icon--medium" role="presentation"></span>
+                                <i class="material-icons tn-icon--medium">visibility_off</i>
                         </button>
                         <button (click)="removeSelected()" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
-                            <span class="tn-icon tn-icon--delete tn-icon--medium" role="presentation"></span>
+                                <i class="material-icons tn-icon--medium">delete</i>
                         </button>
                     </div>
                 </div>
@@ -56,7 +56,9 @@
                                 <input type="checkbox" [(ngModel)]="user.selected">
                             </td>
                             <td>
-                                <a routerLink="/table/{{ user.id }}"><b>{{ user.email }}</b></a>
+                                <a routerLink="/table/{{ user.id }}">
+                                    <b>{{ user.email }}</b>
+                                </a>
                             </td>
                             <td>{{ user.username }}</td>
                             <td>{{ user.name }}</td>
@@ -75,15 +77,16 @@
                             <td>
                                 <div class="tn-has-float-right">
                                     <button (click)="toggleLocked(i)" class="tn-button tn-button--text tn-button--icon tn-button--small">
-                                        <span class="tn-icon tn-icon--lock tn-icon--small" role="presentation"></span>
+                                        <i *ngIf="user.locked" class="material-icons">lock_outline</i>
+                                        <i *ngIf="!user.locked" class="material-icons">lock_open</i>
                                     </button>
                                     <button (click)="toggleVisibility(i)" class="tn-button tn-button--text tn-button--icon tn-button--small" [disabled]="user.locked">
-                                        <span [ngClass]="{ 'tn-icon--visibilityoff': user.visible, 'tn-icon--visibilityon': !user.visible }" class="tn-icon tn-icon--small"
-                                            role="presentation"></span>
+                                        <i *ngIf="user.visible" class="material-icons">visibility</i>
+                                        <i *ngIf="!user.visible" class="material-icons">visibility_off</i>
                                     </button>
                                     <button (click)="deleteItem(i)" class="tn-button tn-button--text tn-button--icon tn-button--small" [disabled]="user.locked">
-                                        <span class="tn-icon tn-icon--delete tn-icon--small" role="presentation"></span>
-                                    </button>
+                                            <i class="material-icons">delete</i>
+                                        </button>
                                 </div>
                             </td>
                         </tr>
