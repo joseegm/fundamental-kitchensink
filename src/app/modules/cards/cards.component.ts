@@ -49,12 +49,16 @@ export class CardsComponent {
     }
 
     toggleVisible(index, event) {
+        if (this.users[index].locked) 
+            return event.stopPropagation();
         this.users[index].visible = !this.users[index].visible;
         this.users[index].showMenu = false;
         event.stopPropagation();
     }
 
     deleteItem(index, event) {
+        if (this.users[index].locked) 
+            return event.stopPropagation();
         this.users.splice(index, 1);
         this.users[index].showMenu = false;
         event.stopPropagation();

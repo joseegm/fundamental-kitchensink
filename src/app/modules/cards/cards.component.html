@@ -65,19 +65,32 @@
                                 <ul class="tn-dropdown__menu tn-contextual-menu" [attr.aria-hidden]="!user.showMenu">
                                     <li>
                                         <a (click)="toggleLocked(i, $event); false;" class="tn-dropdown__item">
-                                            <span *ngIf="user.locked">Unlock user</span>
-                                            <span *ngIf="!user.locked">Lock user</span>
+                                            <span *ngIf="user.locked">
+                                                    <i class="material-icons">lock_open</i>
+                                                    Unlock user
+                                            </span>
+                                            <span *ngIf="!user.locked">
+                                                    <i class="material-icons">lock_outline</i>
+                                                    Lock user
+                                            </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a (click)="toggleVisible(i, $event); false;" class="tn-dropdown__item">
-                                                <span *ngIf="user.visible">Set visibility off</span>
-                                                <span *ngIf="!user.visible">Set visibility on</span>
-                                                
+                                        <a (click)="toggleVisible(i, $event); false;" class="tn-dropdown__item" [attr.aria-disabled]="user.locked">
+                                            <span *ngIf="user.visible">
+                                                    <i class="material-icons">visibility_off</i>                                                    Set visibility off
+                                            </span>
+                                            <span *ngIf="!user.visible">
+                                                    <i class="material-icons">visibility</i>
+                                                    Set visibility on
+                                            </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a (click)="deleteItem(i, $event); false;"class="tn-dropdown__item">Delete</a>
+                                        <a (click)="deleteItem(i, $event); false;" class="tn-dropdown__item" [attr.aria-disabled]="user.locked">
+                                                <i class="material-icons">delete</i>
+                                                Delete
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
