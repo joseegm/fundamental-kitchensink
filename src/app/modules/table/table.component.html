@@ -6,7 +6,7 @@
         <div class="tn-action-bar__actions">
             <div class="tn-action-bar__action-item">
                 <button (click)="loadData()" class="tn-button tn-button--text tn-button--action-bar" [disabled]="!users">
-                        <i class="material-icons tn-icon--medium">refresh</i>
+                    <i class="material-icons tn-icon--medium">refresh</i>
                     Reset Data
                 </button>
             </div>
@@ -25,13 +25,13 @@
                     </h1>
                     <div class="tn-panel__actions">
                         <button (click)="toggleVisibleSelected(true)" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
-                                <i class="material-icons tn-icon--medium">visibility</i>
+                            <i class="material-icons tn-icon--medium">visibility</i>
                         </button>
                         <button (click)="toggleVisibleSelected(false)" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
-                                <i class="material-icons tn-icon--medium">visibility_off</i>
+                            <i class="material-icons tn-icon--medium">visibility_off</i>
                         </button>
                         <button (click)="removeSelected()" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
-                                <i class="material-icons tn-icon--medium">delete</i>
+                            <i class="material-icons tn-icon--medium">delete</i>
                         </button>
                     </div>
                 </div>
@@ -77,16 +77,16 @@
                             <td>
                                 <div class="tn-has-float-right">
                                     <button (click)="toggleLocked(i)" class="tn-button tn-button--text tn-button--icon tn-button--small">
-                                        <i *ngIf="user.locked" class="material-icons">lock_outline</i>
-                                        <i *ngIf="!user.locked" class="material-icons">lock_open</i>
+                                        <i *ngIf="!user.locked" class="material-icons">lock_outline</i>
+                                        <i *ngIf="user.locked" class="material-icons">lock_open</i>
                                     </button>
                                     <button (click)="toggleVisibility(i)" class="tn-button tn-button--text tn-button--icon tn-button--small" [disabled]="user.locked">
-                                        <i *ngIf="user.visible" class="material-icons">visibility</i>
-                                        <i *ngIf="!user.visible" class="material-icons">visibility_off</i>
+                                        <i *ngIf="!user.visible" class="material-icons">visibility</i>
+                                        <i *ngIf="user.visible" class="material-icons">visibility_off</i>
                                     </button>
                                     <button (click)="deleteItem(i)" class="tn-button tn-button--text tn-button--icon tn-button--small" [disabled]="user.locked">
-                                            <i class="material-icons">delete</i>
-                                        </button>
+                                        <i class="material-icons">delete</i>
+                                    </button>
                                 </div>
                             </td>
                         </tr>

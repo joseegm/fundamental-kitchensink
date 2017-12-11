@@ -10,8 +10,12 @@
 
 .tn-container { max-width: 100%; }
 
+.tn-panel { min-height: 200px; }
+
 .tn-card__status span { margin-right: 1em; }
 
 .tn-dropdown__item i { vertical-align: middle; }
 
 .tn-dropdown__item[aria-disabled="true"]:hover { background: none; color: #7f90a4; }
+
+.tn-image--xxl { width: 200px; height: 200px; }
