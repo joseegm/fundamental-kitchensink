@@ -8,16 +8,18 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './modules/menu/menu.component';
 import { WelcomeComponent } from './modules/welcome/welcome.component';
 import { TableComponent } from './modules/table/table.component';
-import { UserDetailsComponent } from './modules/userDetails/userDetails.component';
 import { CardsComponent } from './modules/cards/cards.component';
+import { TreeComponent } from './modules/tree/tree.component';
+import { UserDetailsComponent } from './modules/userDetails/userDetails.component';
 
 import { DataService } from './services/data.service';
 
 const appRoutes: Routes = [
     { path: '', component: WelcomeComponent, pathMatch: 'full' },
     { path: 'table', component: TableComponent, pathMatch: 'full' },
-    { path: ':componentSlug/:id', component: UserDetailsComponent, pathMatch: 'full' },
-    { path: 'cards', component: CardsComponent, pathMatch: 'full' }
+    { path: 'cards', component: CardsComponent, pathMatch: 'full' },
+    { path: 'tree', component: TreeComponent, pathMatch: 'full' },
+    { path: ':componentSlug/:id', component: UserDetailsComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -26,8 +28,9 @@ const appRoutes: Routes = [
         MenuComponent,
         WelcomeComponent,
         TableComponent,
-        UserDetailsComponent,
-        CardsComponent
+        CardsComponent,
+        TreeComponent,
+        UserDetailsComponent
     ],
     imports: [
         BrowserModule,

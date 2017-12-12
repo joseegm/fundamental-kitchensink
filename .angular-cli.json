@@ -10,7 +10,8 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "_redirects"
+        "_redirects",
+        "data"
       ],
       "index": "index.html",
       "main": "main.ts",

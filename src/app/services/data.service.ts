@@ -14,5 +14,9 @@ export class DataService {
         return this.http.get('https://jsonplaceholder.typicode.com/users/' +  id);
     }
 
+    public getBlock() {
+        return this.http.get('/data/block.json');
+    }
+
 
 }

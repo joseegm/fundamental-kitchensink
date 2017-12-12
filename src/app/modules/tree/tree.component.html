@@ -1,0 +1,90 @@
+<div class="tn-page">
+    <header class="tn-action-bar">
+        <h1 class="tn-action-bar__title">
+            Tree Sample
+        </h1>
+        <div class="tn-action-bar__actions">
+            <div class="tn-action-bar__action-item">
+                <button (click)="loadData()" class="tn-button tn-button--text tn-button--action-bar" [disabled]="!block">
+                    <i class="material-icons tn-icon--medium">refresh</i>
+                    Reset Data
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <article class="tn-page__content">
+        <section class="tn-section">
+            <div class="tn-panel" [attr.aria-busy]="!block ? 'true' : 'false'">
+                <div class="tn-spinner" [attr.aria-hidden]="!block ? 'false' : 'true'" aria-label="Loading">
+                    <div></div>
+                </div>
+                <div *ngIf="block" class="tn-panel__header">
+                    <h1 class="tn-panel__title">
+                        Bitcoin Block: {{ block.hash }} - {{ block.tx.length }} Transactions
+                    </h1>
+                </div>
+
+                <ul *ngIf="block" class="tn-tree" id="q3gqJ609" role="tree">
+                    <li *ngFor="let t of block.tx; let i = index;" class="tn-tree__item" role="treeitem" aria-expanded="false">
+                        <div class="tn-tree__row">
+                            <div class="tn-tree__col tn-tree__col--control">
+                                <button class="tn-tree__control" aria-label="Expand" aria-pressed="true"></button>
+                                <a class="tn-has-font-weight-semi">{{ t.hash }}</a>
+                            </div>
+                        </div>
+
+                        <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" aria-hidden="false">
+                            <li class="tn-tree__item" role="treeitem" id="a2Qhp313" aria-expanded="false">
+                                <div class="tn-tree__row">
+                                    <div class="tn-tree__col tn-tree__col--control">
+                                        <button class="tn-tree__control" aria-label="Expand" aria-pressed="true"></button>
+                                        <a class="tn-has-font-weight-semi">Inputs</a> ({{ t.inputs.length }})
+                                    </div>
+                                </div>
+                                <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" aria-hidden="false">
+                                    <li *ngFor="let in of t.inputs; let j = index" class="tn-tree__item" role="treeitem" id="aKWZR356" aria-expanded="false">
+                                        <div class="tn-tree__row">
+                                            <div class="tn-tree__col tn-tree__col--control">
+                                                <span *ngIf="in.prev_out">{{ in.prev_out.addr }}</span>
+                                                <span *ngIf="!in.prev_out">Mined</span>
+                                            </div>
+                                            <div class="tn-tree__col">
+                                                {{ toBTC(in.prev_out.value) | number:'2.6' }}
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" aria-hidden="false">
+                            <li class="tn-tree__item" role="treeitem" id="a2Qhp313" aria-expanded="false">
+                                <div class="tn-tree__row">
+                                    <div class="tn-tree__col tn-tree__col--control">
+                                        <button class="tn-tree__control" aria-label="Expand" aria-pressed="true"></button>
+                                        <a class="tn-has-font-weight-semi">Outputs</a> ({{ t.out.length }})
+                                    </div>
+                                </div>
+                                <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" aria-hidden="false">
+                                    <li *ngFor="let ou of t.out; let k = index" class="tn-tree__item" role="treeitem" id="aKWZR356" aria-expanded="false">
+                                        <div class="tn-tree__row">
+                                            <div class="tn-tree__col tn-tree__col--control">
+                                                <span>{{ ou.addr }}</span>
+                                            </div>
+                                            <div class="tn-tree__col">
+                                                {{ toBTC(ou.value) | number:'2.6' }}
+                                                <span *ngIf="ou.spent"> - Spent</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </article>
+</div>
