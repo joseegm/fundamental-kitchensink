@@ -21,61 +21,73 @@
                 </div>
                 <div *ngIf="block" class="tn-panel__header">
                     <h1 class="tn-panel__title">
-                        Bitcoin Block: {{ block.hash }} - {{ block.tx.length }} Transactions
+                        Bitcoin Block No. {{ block.height }} - {{ block.tx.length }} Transactions
                     </h1>
                 </div>
 
                 <ul *ngIf="block" class="tn-tree" id="q3gqJ609" role="tree">
-                    <li *ngFor="let t of block.tx; let i = index;" class="tn-tree__item" role="treeitem" aria-expanded="false">
+                    <li *ngFor="let t of block.tx; let i = index;" class="tn-tree__item" role="treeitem" [attr.aria-expanded]="t.expanded">
                         <div class="tn-tree__row">
-                            <div class="tn-tree__col tn-tree__col--control">
-                                <button class="tn-tree__control" aria-label="Expand" aria-pressed="true"></button>
+                            <div (click)="t.expanded = !t.expanded" class="tn-tree__col tn-tree__col--control">
+                                <button class="tn-tree__control" aria-label="Expand" [attr.aria-pressed]="t.expanded"></button>
                                 <a class="tn-has-font-weight-semi">{{ t.hash }}</a>
+                            </div>
+                            <div class="tn-tree__col"> 
+                                <b [innerHTML]="toBTC(t.totalOut) | noLeadingZeroes:'3.8'" class="ks-numerical"></b> BTC
+                            </div>
+                            <div class="tn-tree__col">
+                                <b [innerHTML]="toBTC(t.fees) | noLeadingZeroes:'3.8'" class="ks-numerical"></b> BTC
+                            </div>
+                            <div class="tn-tree__col">
+                                {{ t.time * 1000 | date:'dd.MM.y, hh:mm:ss' }}
                             </div>
                         </div>
 
-                        <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" aria-hidden="false">
-                            <li class="tn-tree__item" role="treeitem" id="a2Qhp313" aria-expanded="false">
+                        <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.expanded">
+                            <li class="tn-tree__item" role="treeitem" aria-expanded="false">
                                 <div class="tn-tree__row">
-                                    <div class="tn-tree__col tn-tree__col--control">
-                                        <button class="tn-tree__control" aria-label="Expand" aria-pressed="true"></button>
+                                    <div (click)="t.inputs.expanded = !t.inputs.expanded" class="tn-tree__col tn-tree__col--control">
+                                        <button class="tn-tree__control" aria-label="Expand" [attr.aria-pressed]="t.inputs.expanded"></button>
                                         <a class="tn-has-font-weight-semi">Inputs</a> ({{ t.inputs.length }})
                                     </div>
                                 </div>
-                                <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" aria-hidden="false">
-                                    <li *ngFor="let in of t.inputs; let j = index" class="tn-tree__item" role="treeitem" id="aKWZR356" aria-expanded="false">
+                                <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.inputs.expanded">
+                                    <li *ngFor="let in of t.inputs; let j = index" class="tn-tree__item" role="treeitem" id="aKWZR356" [attr.aria-expanded]="t.inputs.expanded">
                                         <div class="tn-tree__row">
                                             <div class="tn-tree__col tn-tree__col--control">
-                                                <span *ngIf="in.prev_out">{{ in.prev_out.addr }}</span>
-                                                <span *ngIf="!in.prev_out">Mined</span>
+                                                {{ in.prev_out.addr }}
                                             </div>
                                             <div class="tn-tree__col">
-                                                {{ toBTC(in.prev_out.value) | number:'2.6' }}
+                                                <span [innerHTML]="toBTC(in.prev_out.value) | noLeadingZeroes:'3.8'" class="ks-numerical"></span> BTC
                                             </div>
+                                            <div class="tn-tree__col"></div>
+                                            <div class="tn-tree__col"></div>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
 
-                        <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" aria-hidden="false">
-                            <li class="tn-tree__item" role="treeitem" id="a2Qhp313" aria-expanded="false">
+                        <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.expanded">
+                            <li class="tn-tree__item" role="treeitem" [attr.aria-expanded]="t.expanded">
                                 <div class="tn-tree__row">
-                                    <div class="tn-tree__col tn-tree__col--control">
-                                        <button class="tn-tree__control" aria-label="Expand" aria-pressed="true"></button>
+                                    <div (click)="t.out.expanded = !t.out.expanded" class="tn-tree__col tn-tree__col--control">
+                                        <button class="tn-tree__control" aria-label="Expand" [attr.aria-pressed]="t.out.expanded"></button>
                                         <a class="tn-has-font-weight-semi">Outputs</a> ({{ t.out.length }})
                                     </div>
                                 </div>
-                                <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" aria-hidden="false">
-                                    <li *ngFor="let ou of t.out; let k = index" class="tn-tree__item" role="treeitem" id="aKWZR356" aria-expanded="false">
+                                <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.out.expanded">
+                                    <li *ngFor="let ou of t.out; let k = index" class="tn-tree__item" role="treeitem" [attr.aria-expanded]="t.out.expanded">
                                         <div class="tn-tree__row">
                                             <div class="tn-tree__col tn-tree__col--control">
                                                 <span>{{ ou.addr }}</span>
                                             </div>
                                             <div class="tn-tree__col">
-                                                {{ toBTC(ou.value) | number:'2.6' }}
-                                                <span *ngIf="ou.spent"> - Spent</span>
+                                                <span [innerHTML]="toBTC(ou.value) | noLeadingZeroes:'3.8'" class="ks-numerical"></span> BTC
+                                                <span *ngIf="ou.spent" class="tn-badge">Spent</span>
                                             </div>
+                                            <div class="tn-tree__col"></div>
+                                            <div class="tn-tree__col"></div>
                                         </div>
                                     </li>
                                 </ul>

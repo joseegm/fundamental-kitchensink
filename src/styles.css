@@ -21,3 +21,5 @@
 .tn-dropdown__item[aria-disabled="true"]:hover { background: none; color: #7f90a4; }
 
 .tn-image--xxl { width: 200px; height: 200px; }
+
+.ks-numerical { font-family: monospace; font-size: 1.5em; }

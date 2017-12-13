@@ -14,6 +14,8 @@ import { UserDetailsComponent } from './modules/userDetails/userDetails.componen
 
 import { DataService } from './services/data.service';
 
+import { NoLeadingZeroes } from './modules/common/pipes';
+
 const appRoutes: Routes = [
     { path: '', component: WelcomeComponent, pathMatch: 'full' },
     { path: 'table', component: TableComponent, pathMatch: 'full' },
@@ -30,7 +32,9 @@ const appRoutes: Routes = [
         TableComponent,
         CardsComponent,
         TreeComponent,
-        UserDetailsComponent
+        UserDetailsComponent,
+
+        NoLeadingZeroes
     ],
     imports: [
         BrowserModule,
