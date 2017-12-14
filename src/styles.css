@@ -8,6 +8,8 @@
 
 .tn-badge + .tn-badge { margin-left: 1em; }
 
+.tn-page__content { margin-bottom: 50px; }
+
 .tn-container { max-width: 100%; }
 
 .tn-panel { min-height: 200px; }

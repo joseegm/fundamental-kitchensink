@@ -10,8 +10,10 @@ import { DataService } from '../../services/data.service';
 export class CardsComponent {
 
     users: any;
+    oUsers: any;
+    loadingMore: boolean = false;
 
-    allSelected: boolean = false;
+
 
     constructor(private dataService: DataService, private sanitizer: DomSanitizer) { }
 
@@ -23,7 +25,7 @@ export class CardsComponent {
         this.users = null;
         this.dataService.getUsers().subscribe(data => {
             setTimeout(()=>{ 
-                this.users = this.dataInstrument(data); 
+                this.oUsers = this.users = this.dataInstrument(data); 
             }, 500)
         });
     }
@@ -64,6 +66,14 @@ export class CardsComponent {
         this.users.splice(index, 1);
         this.users[index].showMenu = false;
         event.stopPropagation();
+    }
+
+    loadMore() {
+        this.loadingMore = true;
+        setTimeout(()=>{ 
+            this.users = this.users.concat(this.dataInstrument(JSON.parse(JSON.stringify(this.oUsers)))); 
+            this.loadingMore = false;
+        }, 500);
     }
 
 

@@ -94,6 +94,17 @@
                         </div>
                     </a>
                 </div>
+
+                <div *ngIf="users" class="tn-panel__footer" [attr.aria-busy]="loadingMore">
+                    <div class="tn-spinner" [attr.aria-hidden]="!loadingMore" aria-label="Loading">
+                        <div></div>
+                    </div>
+
+                    Showing first {{ users.length }} items.
+                    <button (click)="loadMore()" class="tn-button tn-button--link">
+                        Load more
+                    </button>
+                </div>
             </div>
         </section>
     </article>
