@@ -22,4 +22,7 @@
 
 .tn-image--xxl { width: 200px; height: 200px; }
 
+.tn-tree { min-width: 1600px; }
+
 .ks-numerical { font-family: monospace; font-size: 1.5em; }
+    .ks-numerical .ks-numerical-gray { color: #ccc; }

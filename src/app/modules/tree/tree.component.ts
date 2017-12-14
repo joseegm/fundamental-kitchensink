@@ -40,21 +40,20 @@ export class TreeComponent {
             t.fees = t.totalIn - t.totalOut;
             return t;
         });
+        data.allExpanded = false;
         return data;
-        /*
-        return data.categoryTree[0].children.map(user => {
-            user.selected = false;
-            user.visible = true;
-            user.locked = false;
-            return user;
-        });
-        */
     }
 
     toBTC(sat) {
         return sat / 100000000;
     }
 
-
+    expandContractAll() {
+        this.block.allExpanded = !this.block.allExpanded;
+        for (let t of this.block.tx) {
+            t.expanded = t.inputs.expanded = t.out.expanded = this.block.allExpanded;
+            
+        }
+    }
 
 }

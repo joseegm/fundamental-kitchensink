@@ -25,18 +25,35 @@
                     </h1>
                 </div>
 
-                <ul *ngIf="block" class="tn-tree" id="q3gqJ609" role="tree">
+                <div *ngIf="block" class="tn-tree tn-tree--header">
+                    <div class="tn-tree__row tn-tree__row--header">
+                        <div class="tn-tree__col tn-tree__col--control">
+                            <button (click)="expandContractAll()" class="tn-tree__control" aria-label="Expand all" [attr.aria-pressed]="block.allExpanded"></button>
+                            Transaction hash
+                        </div>
+                        <div class="tn-tree__col">
+                            Amount
+                        </div>
+                        <div class="tn-tree__col">
+                            Fee
+                        </div>
+                        <div class="tn-tree__col">
+                            Date &amp; Time
+                        </div>
+                    </div>
+                </div>
+                <ul *ngIf="block" class="tn-tree" role="tree">
                     <li *ngFor="let t of block.tx; let i = index;" class="tn-tree__item" role="treeitem" [attr.aria-expanded]="t.expanded">
                         <div class="tn-tree__row">
                             <div (click)="t.expanded = !t.expanded" class="tn-tree__col tn-tree__col--control">
                                 <button class="tn-tree__control" aria-label="Expand" [attr.aria-pressed]="t.expanded"></button>
                                 <a class="tn-has-font-weight-semi">{{ t.hash }}</a>
                             </div>
-                            <div class="tn-tree__col"> 
+                            <div class="tn-tree__col">
                                 <b [innerHTML]="toBTC(t.totalOut) | noLeadingZeroes:'3.8'" class="ks-numerical"></b> BTC
                             </div>
                             <div class="tn-tree__col">
-                                <b [innerHTML]="toBTC(t.fees) | noLeadingZeroes:'3.8'" class="ks-numerical"></b> BTC
+                                <span [innerHTML]="toBTC(t.fees) | noLeadingZeroes:'3.8'" class="ks-numerical"></span> BTC
                             </div>
                             <div class="tn-tree__col">
                                 {{ t.time * 1000 | date:'dd.MM.y, hh:mm:ss' }}
