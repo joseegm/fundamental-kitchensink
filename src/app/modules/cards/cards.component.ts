@@ -13,8 +13,6 @@ export class CardsComponent {
     oUsers: any;
     loadingMore: boolean = false;
 
-
-
     constructor(private dataService: DataService, private sanitizer: DomSanitizer) { }
 
     ngOnInit(): void {

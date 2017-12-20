@@ -26,7 +26,7 @@ export class TreeComponent {
     }
 
     dataInstrument(data) {
-        data.tx = data.tx.slice(0, 200);
+        data.tx = data.tx.slice(0, 400);
         data.tx = data.tx.map(t => {
             t.expanded = false;
             t.inputs.expanded = false;

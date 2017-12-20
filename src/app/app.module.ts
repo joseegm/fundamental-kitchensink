@@ -9,8 +9,9 @@ import { MenuComponent } from './modules/menu/menu.component';
 import { WelcomeComponent } from './modules/welcome/welcome.component';
 import { TableComponent } from './modules/table/table.component';
 import { CardsComponent } from './modules/cards/cards.component';
-import { TreeComponent } from './modules/tree/tree.component';
 import { UserDetailsComponent } from './modules/userDetails/userDetails.component';
+import { TreeComponent } from './modules/tree/tree.component';
+import { FormComponent } from './modules/form/form.component';
 
 import { DataService } from './services/data.service';
 
@@ -20,8 +21,9 @@ const appRoutes: Routes = [
     { path: '', component: WelcomeComponent, pathMatch: 'full' },
     { path: 'table', component: TableComponent, pathMatch: 'full' },
     { path: 'cards', component: CardsComponent, pathMatch: 'full' },
+    { path: ':componentSlug/:id', component: UserDetailsComponent, pathMatch: 'full' },
     { path: 'tree', component: TreeComponent, pathMatch: 'full' },
-    { path: ':componentSlug/:id', component: UserDetailsComponent, pathMatch: 'full' }
+    { path: 'form', component: FormComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -31,8 +33,9 @@ const appRoutes: Routes = [
         WelcomeComponent,
         TableComponent,
         CardsComponent,
-        TreeComponent,
         UserDetailsComponent,
+        TreeComponent,
+        FormComponent,
 
         NoLeadingZeroes
     ],
