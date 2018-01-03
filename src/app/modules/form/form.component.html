@@ -29,11 +29,88 @@
                     <div class="tn-panel__actions">
                     </div>
                 </div>
+
+                <form class="tn-form" (ngSubmit)="submit()">
+                    <div class="tn-container">
+                        <div class="tn-col--8">
+                            <div class="tn-form__item">
+                                <label for="firstName" class="tn-form__label is-required">First name *</label>
+                                <input type="text" name="firstName" [(ngModel)]="model.firstName" required #firstName="ngModel" class="tn-form__control">
+                                <span [attr.aria-hidden]="firstName.valid || !firstName.touched" class="tn-form__message tn-form__message--error">
+                                    First name can't be empty.
+                                </span>
+                            </div>
+
+                            <div class="tn-form__item">
+                                <label for="lastName" class="tn-form__label is-required">Last name *</label>
+                                <input type="text" name="lastName" [(ngModel)]="model.lastName" required #lastName="ngModel" class="tn-form__control">
+                                <span [attr.aria-hidden]="lastName.valid || !lastName.touched" class="tn-form__message tn-form__message--error">
+                                    Last name can't be empty.
+                                </span>
+                            </div>
+
+                            <div class="tn-form__set">
+                                <label class="tn-form__label is-required">Birthday *</label>
+                                <div class="tn-container">
+                                    <div class="tn-col--3">
+                                        <input type="number" name="birthdayDay" [(ngModel)]="model.birthday.day" required #birthdayDay="ngModel" class="tn-form__control" placeholder="Day">
+                                    </div>
+                                    <div class="tn-col--5">
+                                        <select name="birthdayMonth" class="tn-form__control" required [(ngModel)]="model.birthday.month" #birthdayMonth="ngModel">
+                                            <option [ngValue]="null">Month</option>
+                                            <option *ngFor="let m of months; index as i;" [ngValue]="i + 1">{{ m }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="tn-col--4">
+                                        <input type="number" name="birthdayYear" [(ngModel)]="model.birthday.year" required #birthdayYear="ngModel" class="tn-form__control" placeholder="Year">
+                                    </div>
+                                </div>
+                                <span [attr.aria-hidden]="birthdayDay.valid || !birthdayDay.touched" class="tn-form__message tn-form__message--error">
+                                    Enter a valid birthday Day.
+                                </span>
+                                <span [attr.aria-hidden]="birthdayMonth.valid || !birthdayMonth.touched" class="tn-form__message tn-form__message--error">
+                                    Enter a valid birthday Month.
+                                </span>
+                                <span [attr.aria-hidden]="birthdayYear.valid || !birthdayYear.touched" class="tn-form__message tn-form__message--error">
+                                    Enter a valid birthday Year.
+                                </span>
+                            </div>
+
+                            <div class="tn-form__item">
+                                <label for="email" class="tn-form__label is-required">Email *</label>
+                                <input type="email" name="email" [(ngModel)]="model.email" required #email="ngModel" class="tn-form__control">
+                                <span [attr.aria-hidden]="email.valid || !email.touched" class="tn-form__message tn-form__message--error">
+                                    Enter a valid email address.
+                                </span>
+                            </div>
+
+                            <fieldset class="tn-form__set">
+                                <label class="tn-form__label is-required">Question *</label>
+                                <div class="tn-form__item tn-form__item--inline tn-form__item--check">
+                                    <input class="tn-form__control" type="radio" id="radio-13" name="radio-name-5" value="">
+                                    <label class="tn-form__label" for="radio-13">Yes</label>
+                                </div>
+                                <div class="tn-form__item tn-form__item--inline tn-form__item--check">
+                                    <input class="tn-form__control" type="radio" id="radio-14" name="radio-name-5" value="">
+                                    <label class="tn-form__label" for="radio-14">No</label>
+                                </div>
+                            </fieldset>
+
+                            <div class="tn-form__item">
+                                    <label for="firstName" class="tn-form__label is-required">First name *</label>
+                                    <input type="text" name="firstName" [(ngModel)]="model.firstName" required #firstName="ngModel" class="tn-form__control">
+                                    <span [attr.aria-hidden]="firstName.valid || !firstName.touched" class="tn-form__message tn-form__message--error">
+                                        First name can't be empty.
+                                    </span>
+                                </div>
+                            </div>
+                        <div class="tn-col--4">
+                            <p>Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper.</p>
+                            <p>Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper.</p>
+                        </div>
+                    </div>
+                </form>
             </div>
-
-            <form class="tn-form">
-
-            </form>
         </section>
     </article>
 </div>

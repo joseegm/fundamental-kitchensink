@@ -9,15 +9,27 @@ import { DataService } from '../../services/data.service';
 })
 export class FormComponent {
 
-    users: any;
-    oUsers: any;
-    loadingMore: boolean = false;
+    model: any = {
+        firstName: '',
+        lastName: '',
+        birthday: {
+            day: null,
+            month: null,
+            year: null
+        },
+        userName: '',
+        email: ''
+    };
 
-    constructor(private dataService: DataService, private sanitizer: DomSanitizer) { }
+    months: any[] = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+
+    constructor(private sanitizer: DomSanitizer) { }
 
     ngOnInit(): void {
-        
     }
 
+    submit(): void {
+
+    }
 
 }
