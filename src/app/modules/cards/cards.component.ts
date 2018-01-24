@@ -71,7 +71,7 @@ export class CardsComponent {
         setTimeout(()=>{ 
             this.users = this.users.concat(this.dataInstrument(JSON.parse(JSON.stringify(this.oUsers)))); 
             this.loadingMore = false;
-        }, 500);
+        }, 2000);
     }
 
 

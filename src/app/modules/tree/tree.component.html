@@ -1,110 +1,110 @@
-<div class="tn-page">
-    <header class="tn-action-bar">
-        <h1 class="tn-action-bar__title">
+<div class="fd-page">
+    <header class="fd-action-bar">
+        <h1 class="fd-action-bar__title">
             Tree Sample
         </h1>
-        <div class="tn-action-bar__actions">
-            <div class="tn-action-bar__action-item">
-                <button (click)="loadData()" class="tn-button tn-button--text tn-button--action-bar" [disabled]="!block">
-                    <i class="material-icons tn-icon--medium">refresh</i>
+        <div class="fd-action-bar__actions">
+            <div class="fd-action-bar__action-item">
+                <button (click)="loadData()" class="fd-button fd-button--text fd-button--action-bar" [disabled]="!block">
+                    <i class="material-icons fd-icon--medium">refresh</i>
                     Reset Data
                 </button>
             </div>
         </div>
     </header>
 
-    <article class="tn-page__content">
-        <section class="tn-section">
-            <div class="tn-panel" [attr.aria-busy]="!block ? 'true' : 'false'">
-                <div class="tn-spinner" [attr.aria-hidden]="!block ? 'false' : 'true'" aria-label="Loading">
+    <article class="fd-page__content">
+        <section class="fd-section">
+            <div class="fd-panel" [attr.aria-busy]="!block ? 'true' : 'false'">
+                <div class="fd-spinner" [attr.aria-hidden]="!block ? 'false' : 'true'" aria-label="Loading">
                     <div></div>
                 </div>
-                <div *ngIf="block" class="tn-panel__header">
-                    <h1 class="tn-panel__title">
+                <div *ngIf="block" class="fd-panel__header">
+                    <h1 class="fd-panel__title">
                         Bitcoin Block No. {{ block.height }} - {{ block.tx.length }} Transactions
                     </h1>
                 </div>
 
-                <div *ngIf="block" class="tn-tree tn-tree--header">
-                    <div class="tn-tree__row tn-tree__row--header">
-                        <div class="tn-tree__col tn-tree__col--control">
-                            <button (click)="expandContractAll()" class="tn-tree__control" aria-label="Expand all" [attr.aria-pressed]="block.allExpanded"></button>
+                <div *ngIf="block" class="fd-tree fd-tree--header">
+                    <div class="fd-tree__row fd-tree__row--header">
+                        <div class="fd-tree__col fd-tree__col--control">
+                            <button (click)="expandContractAll()" class="fd-tree__control" aria-label="Expand all" [attr.aria-pressed]="block.allExpanded"></button>
                             Transaction hash
                         </div>
-                        <div class="tn-tree__col">
+                        <div class="fd-tree__col">
                             Amount
                         </div>
-                        <div class="tn-tree__col">
+                        <div class="fd-tree__col">
                             Fee
                         </div>
-                        <div class="tn-tree__col">
+                        <div class="fd-tree__col">
                             Date &amp; Time
                         </div>
                     </div>
                 </div>
-                <ul *ngIf="block" class="tn-tree" role="tree">
-                    <li *ngFor="let t of block.tx; let i = index;" class="tn-tree__item" role="treeitem" [attr.aria-expanded]="t.expanded">
-                        <div class="tn-tree__row">
-                            <div (click)="t.expanded = !t.expanded" class="tn-tree__col tn-tree__col--control">
-                                <button class="tn-tree__control" aria-label="Expand" [attr.aria-pressed]="t.expanded"></button>
-                                <a class="tn-has-font-weight-semi">{{ t.hash }}</a>
+                <ul *ngIf="block" class="fd-tree" role="tree">
+                    <li *ngFor="let t of block.tx; let i = index;" class="fd-tree__item" role="treeitem" [attr.aria-expanded]="t.expanded">
+                        <div class="fd-tree__row">
+                            <div (click)="t.expanded = !t.expanded" class="fd-tree__col fd-tree__col--control">
+                                <button class="fd-tree__control" aria-label="Expand" [attr.aria-pressed]="t.expanded"></button>
+                                <a class="fd-has-font-weight-semi">{{ t.hash }}</a>
                             </div>
-                            <div class="tn-tree__col">
+                            <div class="fd-tree__col">
                                 <b [innerHTML]="toBTC(t.totalOut) | noLeadingZeroes:'3.8'" class="ks-numerical"></b> BTC
                             </div>
-                            <div class="tn-tree__col">
+                            <div class="fd-tree__col">
                                 <span [innerHTML]="toBTC(t.fees) | noLeadingZeroes:'3.8'" class="ks-numerical"></span> BTC
                             </div>
-                            <div class="tn-tree__col">
+                            <div class="fd-tree__col">
                                 {{ t.time * 1000 | date:'dd.MM.y, hh:mm:ss' }}
                             </div>
                         </div>
 
-                        <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.expanded">
-                            <li class="tn-tree__item" role="treeitem" aria-expanded="false">
-                                <div class="tn-tree__row">
-                                    <div (click)="t.inputs.expanded = !t.inputs.expanded" class="tn-tree__col tn-tree__col--control">
-                                        <button class="tn-tree__control" aria-label="Expand" [attr.aria-pressed]="t.inputs.expanded"></button>
-                                        <a class="tn-has-font-weight-semi">Inputs</a> ({{ t.inputs.length }})
+                        <ul class="fd-tree__group fd-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.expanded">
+                            <li class="fd-tree__item" role="treeitem" aria-expanded="false">
+                                <div class="fd-tree__row">
+                                    <div (click)="t.inputs.expanded = !t.inputs.expanded" class="fd-tree__col fd-tree__col--control">
+                                        <button class="fd-tree__control" aria-label="Expand" [attr.aria-pressed]="t.inputs.expanded"></button>
+                                        <a class="fd-has-font-weight-semi">Inputs</a> ({{ t.inputs.length }})
                                     </div>
                                 </div>
-                                <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.inputs.expanded">
-                                    <li *ngFor="let in of t.inputs; let j = index" class="tn-tree__item" role="treeitem" id="aKWZR356" [attr.aria-expanded]="t.inputs.expanded">
-                                        <div class="tn-tree__row">
-                                            <div class="tn-tree__col tn-tree__col--control">
+                                <ul class="fd-tree__group fd-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.inputs.expanded">
+                                    <li *ngFor="let in of t.inputs; let j = index" class="fd-tree__item" role="treeitem" id="aKWZR356" [attr.aria-expanded]="t.inputs.expanded">
+                                        <div class="fd-tree__row">
+                                            <div class="fd-tree__col fd-tree__col--control">
                                                 {{ in.prev_out.addr }}
                                             </div>
-                                            <div class="tn-tree__col">
+                                            <div class="fd-tree__col">
                                                 <span [innerHTML]="toBTC(in.prev_out.value) | noLeadingZeroes:'3.8'" class="ks-numerical"></span> BTC
                                             </div>
-                                            <div class="tn-tree__col"></div>
-                                            <div class="tn-tree__col"></div>
+                                            <div class="fd-tree__col"></div>
+                                            <div class="fd-tree__col"></div>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
 
-                        <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.expanded">
-                            <li class="tn-tree__item" role="treeitem" [attr.aria-expanded]="t.expanded">
-                                <div class="tn-tree__row">
-                                    <div (click)="t.out.expanded = !t.out.expanded" class="tn-tree__col tn-tree__col--control">
-                                        <button class="tn-tree__control" aria-label="Expand" [attr.aria-pressed]="t.out.expanded"></button>
-                                        <a class="tn-has-font-weight-semi">Outputs</a> ({{ t.out.length }})
+                        <ul class="fd-tree__group fd-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.expanded">
+                            <li class="fd-tree__item" role="treeitem" [attr.aria-expanded]="t.expanded">
+                                <div class="fd-tree__row">
+                                    <div (click)="t.out.expanded = !t.out.expanded" class="fd-tree__col fd-tree__col--control">
+                                        <button class="fd-tree__control" aria-label="Expand" [attr.aria-pressed]="t.out.expanded"></button>
+                                        <a class="fd-has-font-weight-semi">Outputs</a> ({{ t.out.length }})
                                     </div>
                                 </div>
-                                <ul class="tn-tree__group tn-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.out.expanded">
-                                    <li *ngFor="let ou of t.out; let k = index" class="tn-tree__item" role="treeitem" [attr.aria-expanded]="t.out.expanded">
-                                        <div class="tn-tree__row">
-                                            <div class="tn-tree__col tn-tree__col--control">
+                                <ul class="fd-tree__group fd-tree__group--sublevel-1" role="group" [attr.aria-hidden]="!t.out.expanded">
+                                    <li *ngFor="let ou of t.out; let k = index" class="fd-tree__item" role="treeitem" [attr.aria-expanded]="t.out.expanded">
+                                        <div class="fd-tree__row">
+                                            <div class="fd-tree__col fd-tree__col--control">
                                                 <span>{{ ou.addr }}</span>
                                             </div>
-                                            <div class="tn-tree__col">
+                                            <div class="fd-tree__col">
                                                 <span [innerHTML]="toBTC(ou.value) | noLeadingZeroes:'3.8'" class="ks-numerical"></span> BTC
-                                                <span *ngIf="ou.spent" class="tn-badge">Spent</span>
+                                                <span *ngIf="ou.spent" class="fd-badge">Spent</span>
                                             </div>
-                                            <div class="tn-tree__col"></div>
-                                            <div class="tn-tree__col"></div>
+                                            <div class="fd-tree__col"></div>
+                                            <div class="fd-tree__col"></div>
                                         </div>
                                     </li>
                                 </ul>

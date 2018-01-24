@@ -1,42 +1,42 @@
-<div class="tn-page">
-    <header class="tn-action-bar">
-        <h1 class="tn-action-bar__title">
+<div class="fd-page">
+    <header class="fd-action-bar">
+        <h1 class="fd-action-bar__title">
             Table Sample
         </h1>
-        <div class="tn-action-bar__actions">
-            <div class="tn-action-bar__action-item">
-                <button (click)="loadData()" class="tn-button tn-button--text tn-button--action-bar" [disabled]="!users">
-                    <i class="material-icons tn-icon--medium">refresh</i>
+        <div class="fd-action-bar__actions">
+            <div class="fd-action-bar__action-item">
+                <button (click)="loadData()" class="fd-button fd-button--text fd-button--action-bar" [disabled]="!users">
+                    <i class="material-icons fd-icon--medium">refresh</i>
                     Reset Data
                 </button>
             </div>
         </div>
     </header>
 
-    <article class="tn-page__content">
-        <section class="tn-section">
-            <div class="tn-panel" [attr.aria-busy]="!users ? 'true' : 'false'">
-                <div class="tn-spinner" [attr.aria-hidden]="!users ? 'false' : 'true'" aria-label="Loading">
+    <article class="fd-page__content">
+        <section class="fd-section">
+            <div class="fd-panel" [attr.aria-busy]="!users ? 'true' : 'false'">
+                <div class="fd-spinner" [attr.aria-hidden]="!users ? 'false' : 'true'" aria-label="Loading">
                     <div></div>
                 </div>
-                <div class="tn-panel__header">
-                    <h1 class="tn-panel__title">
+                <div class="fd-panel__header">
+                    <h1 class="fd-panel__title">
                         Users
                     </h1>
-                    <div class="tn-panel__actions">
-                        <button (click)="toggleVisibleSelected(true)" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
-                            <i class="material-icons tn-icon--medium">visibility</i>
+                    <div class="fd-panel__actions">
+                        <button (click)="toggleVisibleSelected(true)" class="fd-button fd-button--text fd-button--icon" [disabled]="!someSelected()">
+                            <i class="material-icons fd-icon--medium">visibility</i>
                         </button>
-                        <button (click)="toggleVisibleSelected(false)" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
-                            <i class="material-icons tn-icon--medium">visibility_off</i>
+                        <button (click)="toggleVisibleSelected(false)" class="fd-button fd-button--text fd-button--icon" [disabled]="!someSelected()">
+                            <i class="material-icons fd-icon--medium">visibility_off</i>
                         </button>
-                        <button (click)="removeSelected()" class="tn-button tn-button--text tn-button--icon" [disabled]="!someSelected()">
-                            <i class="material-icons tn-icon--medium">delete</i>
+                        <button (click)="removeSelected()" class="fd-button fd-button--text fd-button--icon" [disabled]="!someSelected()">
+                            <i class="material-icons fd-icon--medium">delete</i>
                         </button>
                     </div>
                 </div>
 
-                <table class="tn-table" style="min-width: 1290px;">
+                <table class="fd-table" style="min-width: 1290px;">
                     <thead>
                         <tr>
                             <th style="width: 6em;">
@@ -63,28 +63,28 @@
                             <td>{{ user.username }}</td>
                             <td>{{ user.name }}</td>
                             <td>
-                                <span *ngIf="user.locked" class="tn-badge tn-badge--pill tn-badge--error">
+                                <span *ngIf="user.locked" class="fd-badge fd-badge--pill fd-badge--error">
                                     Locked
                                 </span>
-                                <span *ngIf="user.visible" class="tn-badge tn-badge--pill tn-badge--success">
+                                <span *ngIf="user.visible" class="fd-badge fd-badge--pill fd-badge--success">
                                     Visible
                                 </span>
-                                <span *ngIf="!user.visible" class="tn-badge tn-badge--pill">
+                                <span *ngIf="!user.visible" class="fd-badge fd-badge--pill">
                                     Not Visible
                                 </span>
                             </td>
                             <td>{{ user.website }}</td>
                             <td>
-                                <div class="tn-has-float-right">
-                                    <button (click)="toggleLocked(i)" class="tn-button tn-button--text tn-button--icon tn-button--small">
+                                <div class="fd-has-float-right">
+                                    <button (click)="toggleLocked(i)" class="fd-button fd-button--text fd-button--icon fd-button--small">
                                         <i *ngIf="!user.locked" class="material-icons">lock_outline</i>
                                         <i *ngIf="user.locked" class="material-icons">lock_open</i>
                                     </button>
-                                    <button (click)="toggleVisibility(i)" class="tn-button tn-button--text tn-button--icon tn-button--small" [disabled]="user.locked">
+                                    <button (click)="toggleVisibility(i)" class="fd-button fd-button--text fd-button--icon fd-button--small" [disabled]="user.locked">
                                         <i *ngIf="!user.visible" class="material-icons">visibility</i>
                                         <i *ngIf="user.visible" class="material-icons">visibility_off</i>
                                     </button>
-                                    <button (click)="deleteItem(i)" class="tn-button tn-button--text tn-button--icon tn-button--small" [disabled]="user.locked">
+                                    <button (click)="deleteItem(i)" class="fd-button fd-button--text fd-button--icon fd-button--small" [disabled]="user.locked">
                                         <i class="material-icons">delete</i>
                                     </button>
                                 </div>

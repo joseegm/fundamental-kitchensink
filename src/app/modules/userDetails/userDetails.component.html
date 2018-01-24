@@ -1,77 +1,77 @@
-<div class="tn-page" [attr.aria-busy]="user ? 'false' : 'true'">
-    <div class="tn-spinner" [attr.aria-hidden]="!user ? 'false' : 'true'" aria-label="Loading">
+<div class="fd-page" [attr.aria-busy]="user ? 'false' : 'true'">
+    <div class="fd-spinner" [attr.aria-hidden]="!user ? 'false' : 'true'" aria-label="Loading">
         <div></div>
     </div>
 
-    <header *ngIf="user" class="tn-action-bar">
-        <div class="tn-action-bar__navigation">
-            <a routerLink="/{{ componentSlug }}" class="tn-button tn-button--text tn-button--icon tn-button--large" aria-label="Back">
-                <span class="tn-icon tn-icon--backarrow tn-icon--large" role="presentation"></span>
+    <header *ngIf="user" class="fd-action-bar">
+        <div class="fd-action-bar__navigation">
+            <a routerLink="/{{ componentSlug }}" class="fd-button fd-button--text fd-button--icon fd-button--large" aria-label="Back">
+                <span class="fd-icon fd-icon--backarrow fd-icon--large" role="presentation"></span>
             </a>
         </div>
-        <h1 class="tn-action-bar__title">
+        <h1 class="fd-action-bar__title">
             {{ user.name }}
         </h1>
-        <div class="tn-action-bar__actions">
-            <div class="tn-action-bar__action-item">
-                <button class="tn-button tn-button--text tn-button--action-bar" disabled>
-                    <i class="material-icons tn-icon--medium">lock_outline</i>
+        <div class="fd-action-bar__actions">
+            <div class="fd-action-bar__action-item">
+                <button class="fd-button fd-button--text fd-button--action-bar" disabled>
+                    <i class="material-icons fd-icon--medium">lock_outline</i>
                     Lock
                 </button>
-                <button class="tn-button tn-button--text tn-button--action-bar" disabled>
-                    <i class="material-icons tn-icon--medium">visibility</i>
+                <button class="fd-button fd-button--text fd-button--action-bar" disabled>
+                    <i class="material-icons fd-icon--medium">visibility</i>
                     Set Visible
                 </button>
-                <button class="tn-button tn-button--text tn-button--action-bar" disabled>
-                    <i class="material-icons tn-icon--medium">delete</i>
+                <button class="fd-button fd-button--text fd-button--action-bar" disabled>
+                    <i class="material-icons fd-icon--medium">delete</i>
                     Delete
                 </button>
             </div>
         </div>
     </header>
 
-    <article *ngIf="user" class="tn-page__content">
-        <div class="tn-section">
-            <div class="tn-pannel">
-                <div class="tn-panel__header">
-                    <h1 class="tn-panel__title">
+    <article *ngIf="user" class="fd-page__content">
+        <div class="fd-section">
+            <div class="fd-pannel">
+                <div class="fd-panel__header">
+                    <h1 class="fd-panel__title">
                         Details
                     </h1>
                 </div>
 
-                <div class="tn-container">
+                <div class="fd-container">
 
-                    <div class="tn-col--2">
-                            <span class="tn-image tn-image--xxl tn-image--circle tn-image--profile" [style]="user.avatarStyle"></span>
+                    <div class="fd-col--2">
+                            <span class="fd-image fd-image--xxl fd-image--circle fd-image--profile" [style]="user.avatarStyle"></span>
                     </div>
 
-                    <div class="tn-col--5">
-                        <div class="tn-form__item">
-                            <label class="tn-form__label" for="input-7">Name</label>
-                            <input class="tn-form__control" type="text" id="input-7" [value]="user.name" readonly>
+                    <div class="fd-col--5">
+                        <div class="fd-form__item">
+                            <label class="fd-form__label" for="input-7">Name</label>
+                            <input class="fd-form__control" type="text" id="input-7" [value]="user.name" readonly>
                         </div>
-                        <div class="tn-form__item">
-                            <label class="tn-form__label" for="input-7">Username</label>
-                            <input class="tn-form__control" type="text" id="input-7" [value]="user.username" readonly>
+                        <div class="fd-form__item">
+                            <label class="fd-form__label" for="input-7">Username</label>
+                            <input class="fd-form__control" type="text" id="input-7" [value]="user.username" readonly>
                         </div>
-                        <div class="tn-form__item">
-                            <label class="tn-form__label" for="input-7">Email</label>
-                            <input class="tn-form__control" type="text" id="input-7" [value]="user.email" readonly>
+                        <div class="fd-form__item">
+                            <label class="fd-form__label" for="input-7">Email</label>
+                            <input class="fd-form__control" type="text" id="input-7" [value]="user.email" readonly>
                         </div>
-                        <div class="tn-form__item">
-                            <label class="tn-form__label" for="input-7">Website</label>
-                            <input class="tn-form__control" type="text" id="input-7" [value]="user.website" readonly>
+                        <div class="fd-form__item">
+                            <label class="fd-form__label" for="input-7">Website</label>
+                            <input class="fd-form__control" type="text" id="input-7" [value]="user.website" readonly>
                         </div>
                     </div>
 
-                    <div class="tn-col--5">
-                        <div class="tn-form__item">
-                            <label class="tn-form__label" for="input-7">Company</label>
-                            <input class="tn-form__control" type="text" id="input-7" [value]="user.company.name" readonly>
+                    <div class="fd-col--5">
+                        <div class="fd-form__item">
+                            <label class="fd-form__label" for="input-7">Company</label>
+                            <input class="fd-form__control" type="text" id="input-7" [value]="user.company.name" readonly>
                         </div>
-                        <div class="tn-form__item">
-                            <label class="tn-form__label" for="input-7">Slogan</label>
-                            <input class="tn-form__control" type="text" id="input-7" [value]="user.company.catchPhrase" readonly>
+                        <div class="fd-form__item">
+                            <label class="fd-form__label" for="input-7">Slogan</label>
+                            <input class="fd-form__control" type="text" id="input-7" [value]="user.company.catchPhrase" readonly>
                         </div>
                     </div>
 
