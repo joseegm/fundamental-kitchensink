@@ -21,7 +21,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/fundamental-ui/dist/fundamental-ui.min.css",
+        "styles.scss",
         "styles.css"
       ],
       "scripts": [],
